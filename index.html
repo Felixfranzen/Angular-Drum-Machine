@@ -34,7 +34,7 @@
 	</button>
 
 	<div class="slider">
-		<input type="range" min="50" max="200" ng-model="vm.timer"><span class="bpm">{{vm.timer + " BPM"}}</span></input>
+		<input type="range" min="50" max="200" ng-model="vm.timer" numericalbinding><span class="bpm">{{vm.timer + " BPM"}}</span></input>
 	</div>
 </div>
 
@@ -88,9 +88,9 @@
 	<p>5 <i class="fa fa-keyboard-o"></i>
  - Clear pattern</p>
 	<p>6 <i class="fa fa-keyboard-o"></i>
- - tempo - 10</p>
+ - tempo - 1</p>
 	<p>7 <i class="fa fa-keyboard-o"></i>
- - tempo + 10</p>
+ - tempo + 1</p>
 </div>
 
 <div class="instructions">
@@ -108,6 +108,7 @@
 
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/factories/sounds.factory.js"></script>
+<script type="text/javascript" src="js/directives/numerical-binding.directive.js"></script>
 <script type="text/javascript" src="bower_components/howler.js/howler.min.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-angular.module("main", ["soundsFactory"])
+angular.module("main", ["soundsFactory", "numericalBinding"])
 
 .controller("mainController", appController);
 
@@ -96,12 +96,12 @@ function appController($timeout, sounds){
 		} else if (event.which === 53){
 			clearPattern();
 		} else if (event.which === 54){
-			if (vm.timer >= 60){
-				vm.timer-= 10;
+			if (vm.timer > 50){
+				vm.timer-= 1;
 			}
 		} else if (event.which === 55){
-			if (vm.timer <= 190){
-				vm.timer+= 10;
+			if (vm.timer < 200){
+				vm.timer+= 1;
 			}
 		}
 	}
