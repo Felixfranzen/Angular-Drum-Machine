@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="main">
+    <head>
+        <meta charset="UTF-8"> 
+        <title>Angular Drum Machine</title>
+       	<script src="bower_components/angular/angular.min.js"></script>
+       	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    	<link rel="stylesheet" type="text/css" href="css/main.css">
+    	<link rel="stylesheet" type="text/css" href="css/buttons.css">
+    	<link rel="stylesheet" type="text/css" href="css/mobile-specific.css">
+    	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:400,100|Alegreya+Sans+SC|Codystar|Open+Sans:100,400,600' rel='stylesheet' type='text/css'>
+    </head>
+
+
+<body ng-controller="mainController as vm" ng-keypress="vm.keypress($event)">
+
+<div class="maincontainer">
+
+<h1>Angular drum machine</h1>
+
+<div class="instruments">
+	<div class="controlls-wrapper">
+	<button class="btn play-btn" ng-click="vm.play()"><i class="fa fa-play"></i>
+	</button>
+	<button class="btn pause-btn" ng-click="vm.pause()"><i class="fa fa-pause"></i>
+	</button>
+	<button class="btn stop-btn" ng-click="vm.stop()"><i class="fa fa-stop"></i>
+	</button>
+
+	<button class="btn rewind-btn" ng-click="vm.rewind()"><i class="fa fa-fast-backward"></i>
+	</button>
+
+	<button class="btn clear-btn" ng-click="vm.clearPattern()">Clear<i class="fa fa-trash" style="margin-left: 5px;"></i>
+	</button>
+
+	<div class="slider">
+		<input type="range" min="50" max="200" ng-model="vm.timer"><span class="bpm">{{vm.timer + " BPM"}}</span></input>
+	</div>
+</div>
+
+
+<ul ng-repeat="obj in vm.sounds">
+	<li class="title">{{obj.name}}</li>
+	<li ng-repeat="entry in obj.pattern track by $index">
+		
+			<button class="sound-btn btn-off" ng-if="entry===0" ng-click="vm.update(obj, $index)" ng-class="{true: 'off-active'}[($index + 1) === vm._currenttick]">
+				<div class="btn-light"></div>
+			</button>
+			<button class="sound-btn btn-on-low"  ng-if="entry===1" ng-click="vm.update(obj, $index)" ng-class="{true: 'on-active'}[($index + 1) === vm._currenttick]">
+				<div class="btn-light"></div>
+			</button>
+
+			<button class="sound-btn btn-on-high"  ng-if="entry===2" ng-click="vm.update(obj, $index)" ng-class="{true: 'on-active'}[($index + 1) === vm._currenttick]">
+				<div class="btn-light"></div>
+			</button>
+
+
+	<li ng-click="vm.clearSoundPattern(obj, $index)" class="clear-sound"><i class="fa fa-trash"></i>
+
+</li>
+</li>
+	</ul>
+</ul>
+
+</div>
+
+<div class="divider"></div>
+<div class="instructions">
+	<h5>Controls</h5>
+	<p><i class="fa fa-play instruction-icon"></i>Play from the current beat</p>
+	<p><i class="fa fa-pause instruction-icon"></i>Pause on the current beat</p>
+	<p><i class="fa fa-stop instruction-icon"></i>Stop and reset playback</p>
+	<p><i class="fa fa-fast-backward instruction-icon"></i>Reset playback</p>
+	<p>CLEAR <i class="fa fa-trash instruction-icon"></i>Clear all patterns</p>
+	<p><i class="fa fa-sliders instruction-icon"></i>Control the tempo</p>
+</div>
+<div class="instructions">
+
+	<h5>Keyboard Shortcuts</h5>
+	<p>1 <i class="fa fa-keyboard-o"></i>
+ - Play</p>
+	<p>2 <i class="fa fa-keyboard-o"></i>
+ - Pause</p>
+	<p>3 <i class="fa fa-keyboard-o"></i>
+ - Stop</p>
+	<p>4 <i class="fa fa-keyboard-o"></i>
+- Rewind</p>
+	<p>5 <i class="fa fa-keyboard-o"></i>
+ - Clear pattern</p>
+	<p>6 <i class="fa fa-keyboard-o"></i>
+ - tempo - 10</p>
+	<p>7 <i class="fa fa-keyboard-o"></i>
+ - tempo + 10</p>
+</div>
+
+<div class="instructions">
+	<h5>Pattern</h5>
+	<p> <i class="fa fa-square-o instruction-icon"></i>Click the tiles to set a pattern, click twice on the same tile to create an accent</p>
+	<p><i class="fa fa-trash instruction-icon"></i>Clear the pattern from the corresponding track</p>
+
+</div>
+<div class="site-info">
+	<h5>Created by Felix Franzén - 2016</h5>
+	<p>Source code available on <a href="https://github.com/Felixfranzen">github</a></p>
+</div>
+
+
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/factories/sounds.factory.js"></script>
+<script type="text/javascript" src="bower_components/howler.js/howler.min.js"></script>
+</body>
+</html>

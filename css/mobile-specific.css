@@ -1,0 +1,45 @@
+/*Strange way to do this lol*/
+@media (min-width: 1100px) {
+	.maincontainer {
+		max-width: 1000px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.instruments > ul > .title {
+		display: block;
+		width: 50%;
+	}
+
+		.maincontainer {
+			max-width: 950px;
+	}
+
+	.instructions {
+		width: 27%;
+	}
+}
+
+@media (max-width: 990px) {
+	.instruments ul {
+		width: 95%;
+	}
+
+	.maincontainer {
+		max-width: 500px;
+	}
+	.instructions {
+		width: 39%;
+		min-height: 300px;
+	}
+}
+
+@media (max-width: 600px) {
+	.maincontainer {
+		max-width: 250px;
+	}
+
+	.instructions {
+		width: 80%;
+	}
+}
