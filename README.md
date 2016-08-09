@@ -5,4 +5,4 @@ This is just another drum machine created with [Angular](https://github.com/angu
 
 Want to try it?
 --------------------
-Test version available [HERE](http://felixfranzen.github.io)
+Test version available [HERE](http://felixfranzen.github.io/angular-drum-machine/)
